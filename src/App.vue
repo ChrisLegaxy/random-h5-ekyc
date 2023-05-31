@@ -52,7 +52,11 @@
           class="bg-[#ff8300] mb-1 inline-block w-full p-2.5 mt-auto rounded-full font-bold text-white"
           @click="takeSelfie"
         >
-          Scan Face
+          {{
+            !language || language == "kh"
+              ? content.kh.button
+              : content.en.button
+          }}
         </button>
       </div>
     </div>
@@ -72,6 +76,7 @@ const content = {
     rule_3: "សូមនៅកន្លែងដែលមានពន្លឺគ្រប់គ្រាន់",
     rule_4:
       "សូមធ្វើតាមការណែនាំ និងរង់ចាំសម្រាប់ការស្កេនផ្ទៀងផ្ទាត់ផ្សេងៗដោយស្វ័យប្រវត្តិ",
+    button: "ស្កេន ផ្ទៃមុខ",
   },
   en: {
     title:
@@ -80,6 +85,7 @@ const content = {
     rule_2: "Position your face within the frame",
     rule_3: "Make sure it's clear and bright enough",
     rule_4: "Follow instructions and wait for automatic scanning",
+    button: "Scan Face",
   },
 };
 
@@ -127,7 +133,7 @@ export default {
 <style>
 html {
   height: 100%;
-  font-family: "Noto Sans", "Noto Sans Khmer", sans-serif;
+  font-family: "Noto Sans", "Noto Sans Khmer", sans-serif !important;
 }
 
 body {
