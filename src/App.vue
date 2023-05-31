@@ -4,12 +4,18 @@
       <div
         class="w-full m-4 mx-8 max-w-md flex flex-col items-center justify-evenly"
       >
-        <div class="mt-6 aspect-[2/1] max-h-[11rem] w-full h-full flex items-center justify-center">
+        <div
+          class="mt-6 aspect-[2/1] max-h-[11rem] w-full h-full flex items-center justify-center"
+        >
           <img class="w-full h-full" :src="require('./assets/profile.svg')" />
         </div>
         <div class="text-center font-bold my-8">
           {{
-            !language || language == "kh" ? content.kh.title : content.en.title
+            !language || language == "kh"
+              ? content.kh.title
+              : language == "en"
+              ? content.en.title
+              : content.kh.title
           }}
         </div>
         <div class="flex items-center mb-8">
@@ -20,7 +26,9 @@
                 >{{
                   !language || language == "kh"
                     ? content.kh.rule_1
-                    : content.en.rule_1
+                    : language == "en"
+                    ? content.en.rule_1
+                    : content.kh.rule_1
                 }}
               </span>
             </div>
@@ -29,21 +37,27 @@
               <span>{{
                 !language || language == "kh"
                   ? content.kh.rule_2
-                  : content.en.rule_2
+                  : language == "en"
+                  ? content.en.rule_2
+                  : content.kh.rule_2
               }}</span>
             </div>
             <div>
               <i class="fa-solid fa-circle-check text-green-500 mr-8" /><span>{{
                 !language || language == "kh"
                   ? content.kh.rule_3
-                  : content.en.rule_3
+                  : language == "en"
+                  ? content.en.rule_3
+                  : content.kh.rule_3
               }}</span>
             </div>
             <div>
               <i class="fa-solid fa-circle-check text-green-500 mr-8" /><span>{{
                 !language || language == "kh"
                   ? content.kh.rule_4
-                  : content.en.rule_4
+                  : language == "en"
+                  ? content.en.rule_4
+                  : content.kh.rule_4
               }}</span>
             </div>
           </div>
@@ -55,7 +69,9 @@
           {{
             !language || language == "kh"
               ? content.kh.button
-              : content.en.button
+              : language == "en"
+              ? content.en.button
+              : content.kh.button
           }}
         </button>
       </div>
