@@ -1,26 +1,59 @@
 <template>
   <div id="app">
-    <div class="mainContainer">
-      <div class="mainText">
-        Get ready to scan your face
-      </div>
-      <div class="imgContainer">
-        <div class="zGifImg" :style="{'border-color':'#0f8ee9'}">
-          <img class="zImg" :src="require('./assets/faceguide.gif')"/>
+    <div class="h-full flex justify-center leading-relaxed">
+      <div
+        class="w-full m-4 max-w-md flex flex-col items-center justify-evenly"
+      >
+        <div class="mt-6">
+          <img class="aspect-square" :src="require('./assets/profile.svg')" />
         </div>
-      </div>
-      <div class="mainText">
-        Scan face tips
-      </div>
-      <div class="descText">
-        • Position your face within the frame<br/>
-        • Make sure it's clear and bright enough<br/>
-        • Wait a moment for automatic scanning
-      </div>
-    </div>
-    <div class='footer'>
-      <div class="bottomButton" @click="takeSelfie" :style="{'background-color':'#0f8ee9', 'color':'#ffffff'}">
-        Scan Face
+        <div class="text-center font-bold my-8">
+          {{
+            !language || language == "kh" ? content.kh.title : content.en.title
+          }}
+        </div>
+        <div class="flex items-center mb-8">
+          <div class="flex flex-col leading-loose gap-1">
+            <div>
+              <i class="fa-solid fa-circle-check text-green-500 mr-8" />
+              <span
+                >{{
+                  !language || language == "kh"
+                    ? content.kh.rule_1
+                    : content.en.rule_1
+                }}
+              </span>
+            </div>
+            <div>
+              <i class="fa-solid fa-circle-check text-green-500 mr-8" />
+              <span>{{
+                !language || language == "kh"
+                  ? content.kh.rule_2
+                  : content.en.rule_2
+              }}</span>
+            </div>
+            <div>
+              <i class="fa-solid fa-circle-check text-green-500 mr-8" /><span>{{
+                !language || language == "kh"
+                  ? content.kh.rule_3
+                  : content.en.rule_3
+              }}</span>
+            </div>
+            <div>
+              <i class="fa-solid fa-circle-check text-green-500 mr-8" /><span>{{
+                !language || language == "kh"
+                  ? content.kh.rule_4
+                  : content.en.rule_4
+              }}</span>
+            </div>
+          </div>
+        </div>
+        <button
+          class="bg-[#ff8300] mb-1 inline-block w-full p-2.5 mt-auto rounded-full font-bold text-white"
+          @click="takeSelfie"
+        >
+          Scan Face
+        </button>
       </div>
     </div>
   </div>
@@ -28,6 +61,27 @@
 
 <script>
 import ZolozRealIdCore, { ekycLog } from "@/utils/zolozRealIdCore";
+import queryString from "query-string";
+
+const content = {
+  kh: {
+    title:
+      "សូមធ្វើការស្កេនផ្ទៃមុខរបស់អ្នកដើម្បីបញ្ជាក់ថា អត្តសញ្ញាណ្ណដែលបានភ្ជាប់ និងម្ចាស់គណនី គឺជាបុគ្គលតែមួយ",
+    rule_1: "សូមដោះវ៉ែនតា មួក និងម៉ាស់",
+    rule_2: "សូមដាក់ផ្ទៃមុខអោយចំ និងនៅខាងក្នុងស៊ុមរូបភាព",
+    rule_3: "សូមនៅកន្លែងដែលមានពន្លឺគ្រប់គ្រាន់",
+    rule_4:
+      "សូមធ្វើតាមការណែនាំ និងរង់ចាំសម្រាប់ការស្កេនផ្ទៀងផ្ទាត់ផ្សេងៗដោយស្វ័យប្រវត្តិ",
+  },
+  en: {
+    title:
+      "Please scan your face for us to ensure the submitted ID and the eWallet are of the same owner.",
+    rule_1: "Remove glasses, hat and mask",
+    rule_2: "Position your face within the frame",
+    rule_3: "Make sure it's clear and bright enough",
+    rule_4: "Follow instructions and wait for automatic scanning",
+  },
+};
 
 export default {
   name: "app",
@@ -35,9 +89,13 @@ export default {
     return {
       enableNext: true,
       zolozRealIdCore: new ZolozRealIdCore({}),
+      language: undefined,
+      content,
     };
   },
   mounted() {
+    this.language = queryString.parse(location.search)["lang"];
+
     ekycLog("faceGuidePageAppear", {});
     document.addEventListener(
       "back",
@@ -68,20 +126,20 @@ export default {
 
 <style>
 html {
-  font-size:100px;
+  height: 100%;
+  font-family: "Noto Sans", "Noto Sans Khmer", sans-serif;
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
-  color: #282828;
-  font-size:16px;
+  height: 100%;
+  /* font-size: 16px; */
 }
 
 #app {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+  /* display: flex; */
+  height: 100%;
 }
 
 .mainContainer {
@@ -136,5 +194,4 @@ body{
   text-align: center;
   cursor: pointer;
 }
-
 </style>

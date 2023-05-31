@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "async-validator": "3.2.3",
+    "query-string": "7.0.1",
     "vue": "2.6.10"
   },
   "devDependencies": {
