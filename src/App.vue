@@ -49,7 +49,7 @@
           </div>
         </div>
         <button
-          class="bg-[#ff8300] mb-1 inline-block w-full p-2.5 mt-auto rounded-full font-bold text-white"
+          class="bg-[#ff8300] mb-1 inline-block w-full p-3 rounded-full font-bold text-white"
           @click="takeSelfie"
         >
           {{
