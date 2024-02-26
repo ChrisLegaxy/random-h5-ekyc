@@ -9,7 +9,7 @@
         >
           <img class="w-full h-full" :src="require('./assets/profile.svg')" />
         </div>
-        <div class="text-center font-bold py-4">
+        <div class="text-center font-medium py-4">
           <!-- {{
             !language || language == "kh"
               ? content.kh.title
@@ -30,7 +30,7 @@
           <div class="flex flex-col leading-loose gap-1">
             <div class="flex items-start leading-7">
               <i
-                class="fa-solid fa-circle-check text-green-500 mr-8 text-2xl mt-1"
+                class="fa-solid fa-circle-check text-green-500 mr-4 text-2xl mt-1"
               />
               <!-- <span
                 >{{
@@ -53,7 +53,7 @@
 
             <div class="flex items-start leading-7">
               <i
-                class="fa-solid fa-circle-check text-green-500 mr-8 text-2xl mt-1"
+                class="fa-solid fa-circle-check text-green-500 mr-4 text-2xl mt-1"
               />
               <!-- <span>{{
                 !language || language == "kh"
@@ -74,7 +74,7 @@
 
             <div class="flex items-start leading-7">
               <i
-                class="fa-solid fa-circle-check text-green-500 mr-8 text-2xl mt-1"
+                class="fa-solid fa-circle-check text-green-500 mr-4 text-2xl mt-1"
               />
               <!-- <span>{{
                 !language || language == "kh"
@@ -95,7 +95,7 @@
 
             <div class="flex items-start leading-7">
               <i
-                class="fa-solid fa-circle-check text-green-500 mr-8 text-2xl mt-1"
+                class="fa-solid fa-circle-check text-green-500 mr-4 text-2xl mt-1"
               />
               <!-- <span>{{
                 !language || language == "kh"
